@@ -99,6 +99,8 @@ int __cdecl main(int argc, char** argv)
 
         // Create a SOCKET for connecting to server
         ConnectSocket = socket(ptr->ai_family, ptr->ai_socktype, ptr->ai_protocol);
+        //u_long mode = 1; // 1 to enable non-blocking socket
+        //ioctlsocket(ConnectSocket, FIONBIO, &mode);
         if (ConnectSocket == INVALID_SOCKET) {
             printf("socket failed with error: %ld\n", WSAGetLastError());
             WSACleanup();
